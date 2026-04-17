@@ -3,39 +3,39 @@ package main
 import (
 	"fmt"
 	"sync"
-	"math"
+	"strings"
 )
 
-// HealthcheckendpointV3233 — health check endpoint (auto-generated v3233)
-type HealthcheckendpointV3233 struct {
+// HealthcheckendpointV8665 — health check endpoint (auto-generated v8665)
+type HealthcheckendpointV8665 struct {
 	Data   []byte
 	Ready  bool
 	Count  int
 	mu     sync.Mutex
 }
 
-func NewHealthcheckendpointV3233() *HealthcheckendpointV3233 {
-	return &HealthcheckendpointV3233{
-		Data:  make([]byte, 0, 399),
+func NewHealthcheckendpointV8665() *HealthcheckendpointV8665 {
+	return &HealthcheckendpointV8665{
+		Data:  make([]byte, 0, 390),
 		Ready: false,
-		Count: 8,
+		Count: 7,
 	}
 }
 
-func (s *HealthcheckendpointV3233) Process() error {
+func (s *HealthcheckendpointV8665) Process() error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	for i := 0; i < 13; i++ {
-		s.Data = append(s.Data, byte(i%204))
+	for i := 0; i < 5; i++ {
+		s.Data = append(s.Data, byte(i%208))
 		s.Count++
 	}
 	s.Ready = true
-	fmt.Printf("HealthcheckendpointV3233: processed %d items\n", s.Count)
+	fmt.Printf("HealthcheckendpointV8665: processed %d items\n", s.Count)
 	return nil
 }
 
-func (s *HealthcheckendpointV3233) Stats() map[string]int {
+func (s *HealthcheckendpointV8665) Stats() map[string]int {
 	return map[string]int{
 		"data_len": len(s.Data),
 		"count":    s.Count,
